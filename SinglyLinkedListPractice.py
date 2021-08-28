@@ -29,13 +29,24 @@ class LinkedList:
             current_node = current_node.next
         print(list_holder)
 
+    def get_node_by_val(self, val):
+        current_node = self.head
+
+        while current_node:
+            if current_node.data == val:
+                return current_node
+            current_node = current_node.next
+
     def prepend(self, data):
         new_node = Node(data)
 
         new_node.next = self.head
         self.head = new_node
 
-    def insert_after_node(self, prev_node, data):
+    def insert_after_node(self, pointer_val, data):
+
+        prev_node = self.get_node_by_val(pointer_val)
+
         if not prev_node:
             print('previous node does not exist in this list')
             return
@@ -52,6 +63,6 @@ myList.append("B")
 myList.append("C")
 myList.append("D")
 myList.prepend("E")
-myList.insert_after_node(myList.head.next, "B2")
+myList.insert_after_node("E", "H")
 
 myList.print_list()
